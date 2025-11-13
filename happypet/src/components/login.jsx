@@ -11,7 +11,7 @@ const Login = () => {
   });
   const navigate = useNavigate();
 
-  // localStorage data structure: Save credentials as array of users [{email, password}]
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -23,16 +23,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Get users from localStorage
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Try to find a user with the same email and password
+  
     const user = users.find(u => u.email === formData.email && u.password === formData.password);
 
     if (user) {
       localStorage.setItem('loggedInUser', JSON.stringify(user)); // Save current user as logged in
       alert('Login successful!');
-      navigate('/'); // Redirect to landing page
+      navigate('/'); 
     } else {
       alert('Invalid email or password!');
     }
